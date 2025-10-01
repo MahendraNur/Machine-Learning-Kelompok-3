@@ -1,15 +1,18 @@
+# Base image
 FROM python:3.10-slim
 
+# Set working dir
 WORKDIR /app
 
-# copy requirements.txt
+# Install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# copy folder backend/app ke dalam container
-COPY backend/app ./app
+# Copy project
+COPY . .
 
-# copy script training
-COPY train_model.py ./train_model.py
+# Expose port
+EXPOSE 8000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run FastAPI
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
