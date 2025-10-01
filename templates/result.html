@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Prediksi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .result-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .percent {
+            font-size: 52px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #007bff;
+        }
+        .saran {
+            font-size: 18px;
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .factors {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Tingkat Kemungkinan Anxiety</h1>
+        
+        <div class="percent">{{ hasil }}</div>
+        
+        <div class="saran">
+            {{ saran }}
+        </div>
+        
+        <div class="factors">
+            *Hasil telah disesuaikan dengan kondisi yang Anda input
+        </div>
+        
+        <p><small>Berdasarkan analisis model machine learning. 
+           Untuk diagnosis akurat, konsultasi dengan profesional kesehatan.</small></p>
+        
+        <div>
+            <a href="/predict_page" class="btn">Prediksi Lagi</a>
+            <a href="/home" class="btn">Kembali ke Home</a>
+        </div>
+    </div>
+</body>
+</html>
