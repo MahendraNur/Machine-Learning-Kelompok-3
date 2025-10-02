@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tes Kecemasan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .header p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+    
+    .form-container {
+      padding: 40px;
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #333;
+      font-size: 14px;
+    }
+    
+    .risk-info {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e1e5e9;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background: #f8f9fa;
+    }
+    
+    input:focus, select:focus {
+      outline: none;
+      border-color: #4facfe;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .submit-btn {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+    }
+    
+    .navigation {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #e1e5e9;
+    }
+    
+    .nav-link {
+      color: #4facfe;
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 2px solid #4facfe;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .nav-link:hover {
+      background: #4facfe;
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      
+      .form-container {
+        padding: 20px;
+      }
+      
+      .header {
+        padding: 20px;
+      }
+      
+      .header h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Tes Prediksi Tingkat Kecemasan</h1>
+      <p>Isi form berikut untuk mengetahui tingkat kemungkinan anxiety Anda</p>
+    </div>
+    
+    <div class="form-container">
+      <form action="/predict" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="sleep_hours">Jam Tidur per Hari</label>
+            <div class="risk-info">Kurang dari 6 jam = berisiko</div>
+            <input type="number" step="0.1" id="sleep_hours" name="sleep_hours" 
+                   placeholder="Contoh: 7.5" min="0" max="24" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="physical_activity">Aktivitas Fisik (jam/minggu)</label>
+            <div class="risk-info">Kurang dari 2 jam = berisiko</div>
+            <input type="number" step="0.1" id="physical_activity" name="physical_activity" 
+                   placeholder="Contoh: 3.5" min="0" max="168" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="caffeine">Asupan Kafein (mg/hari)</label>
+            <div class="risk-info">Lebih dari 100 mg = berisiko</div>
+            <input type="number" step="0.1" id="caffeine" name="caffeine" 
+                   placeholder="Contoh: 50" min="0" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="alcohol">Konsumsi Alkohol (gelas/minggu)</label>
+            <div class="risk-info">Lebih dari 3 gelas = berisiko</div>
+            <input type="number" step="0.1" id="alcohol" name="alcohol" 
+                   placeholder="Contoh: 2" min="0" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="stress_level">Tingkat Stres (1-10)</label>
+            <div class="risk-info">Lebih dari 6 = berisiko</div>
+            <input type="number" id="stress_level" name="stress_level" 
+                   placeholder="1 (rendah) - 10 (tinggi)" min="1" max="10" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="heart_rate">Detak Jantung (BPM)</label>
+            <div class="risk-info">Lebih dari 85 BPM = berisiko</div>
+            <input type="number" id="heart_rate" name="heart_rate" 
+                   placeholder="Contoh: 72" min="40" max="200" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="breathing_rate">Laju Pernapasan (kali/menit)</label>
+            <div class="risk-info">Lebih dari 18 kali = berisiko</div>
+            <input type="number" id="breathing_rate" name="breathing_rate" 
+                   placeholder="Contoh: 16" min="8" max="40" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="smoking">Kebiasaan Merokok</label>
+            <select id="smoking" name="smoking" required>
+              <option value="">-- Pilih --</option>
+              <option value="No">Tidak</option>
+              <option value="Yes">Ya</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="family_history">Riwayat Anxiety Keluarga</label>
+            <select id="family_history" name="family_history" required>
+              <option value="">-- Pilih --</option>
+              <option value="No">Tidak Ada</option>
+              <option value="Yes">Ada</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="life_event">Peristiwa Besar Baru-baru Ini</label>
+            <select id="life_event" name="life_event" required>
+              <option value="">-- Pilih --</option>
+              <option value="No">Tidak Ada</option>
+              <option value="Yes">Ada</option>
+            </select>
+          </div>
+        </div>
+        
+        <button type="submit" class="submit-btn">
+          🧠 Analisis Tingkat Kecemasan
+        </button>
+      </form>
+      
+      <div class="navigation">
+        <a href="/home" class="nav-link">🏠 Kembali ke Home</a>
+        <a href="/test_model" class="nav-link">🧪 Test Model</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Validasi form sederhana
+    document.querySelector('form').addEventListener('submit', function(e) {
+      const inputs = this.querySelectorAll('input[required], select[required]');
+      let valid = true;
+      
+      inputs.forEach(input => {
+        if (!input.value) {
+          valid = false;
+          input.style.borderColor = '#ff4757';
+        } else {
+          input.style.borderColor = '#e1e5e9';
+        }
+      });
+      
+      if (!valid) {
+        e.preventDefault();
+        alert('Harap isi semua field yang wajib diisi!');
+      }
+    });
+  </script>
+</body>
+</html>
