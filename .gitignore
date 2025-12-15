@@ -1,0 +1,3 @@
+*.node
+frontend/node_modules/@esbuild/win32-x64/esbuild.exe
+backend/__pycache__/main.cpython-313.pyc
