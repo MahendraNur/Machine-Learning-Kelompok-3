@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Hasil Prediksi</title></head>
+<body>
+  <h2>Hasil Prediksi</h2>
+  {% if result %}
+    {% if result.error %}
+      <p><b>Error:</b> {{ result.error }}</p>
+    {% else %}
+      <p><b>Prediksi:</b> {{ result["prediksi"] }}</p>
+      <p>Probabilitas Tidak Cemas: {{ result["probabilitas_tidak_cemas"] }}</p>
+      <p>Probabilitas Cemas: {{ result["probabilitas_cemas"] }}</p>
+    {% endif %}
+  {% else %}
+    <p>Belum ada prediksi. Silakan isi form di <a href="/predict">/predict</a></p>
+  {% endif %}
+  <a href="/home"><button>Kembali</button></a>
+</body>
+</html>

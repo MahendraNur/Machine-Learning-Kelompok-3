@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Form Prediksi</title></head>
+<body>
+  <h2>Isi Data untuk Prediksi</h2>
+  <form action="/predict" method="post">
+    Jam Tidur: <input type="number" step="0.1" name="jam_tidur" required><br>
+    Aktivitas Fisik (jam/minggu):<input type="number" name="aktivitas_fisik_jam_minggu" step="any" required><br>
+    Asupan Kafein (mg/hari): <input type="number" name="asupan_kafein_mg_hari" required><br>
+    Konsumsi Alkohol (gelas/minggu): <input type="number" name="konsumsi_alkohol_gelas_minggu" required><br>
+    Merokok (0=tidak, 1=ya): <input type="number" name="merokok" required><br>
+    Riwayat Keluarga Kecemasan (0=tidak, 1=ya): <input type="number" name="riwayat_keluarga_kecemasan" required><br>
+    Tingkat Stres (0-10): <input type="number" name="tingkat_stres" required><br>
+    Detak Jantung (bpm): <input type="number" name="detak_jantung_bpm" required><br>
+    Laju Pernapasan: <input type="number" name="laju_pernapasan" required><br>
+    Peristiwa Besar Hidup (0=tidak, 1=ya): <input type="number" name="peristiwa_besar_hidup" required><br><br>
+    <button type="submit">Prediksi</button>
+  </form>
+</body>
+</html>
