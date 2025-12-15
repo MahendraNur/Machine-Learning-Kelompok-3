@@ -21,7 +21,7 @@ try:
 except Exception:
     model = None
 
-# Schema input dari React
+# Schema input
 class InputData(BaseModel):
     jam_tidur: float
     aktivitas_fisik_jam_minggu: float
@@ -41,14 +41,38 @@ def predict_result(data: InputData):
 
     df = pd.DataFrame([data.dict()])
 
+    # Prediksi model
     prediksi = model.predict(df)[0]
     probabilitas = model.predict_proba(df)[0]
     hasil = "Cemas" if prediksi == 1 else "Tidak Cemas"
+
+    # Analisis faktor risiko
+    faktor_risiko = []
+    if data.jam_tidur < 6:
+        faktor_risiko.append("Kurang tidur (<6 jam)")
+    if data.aktivitas_fisik_jam_minggu < 2:
+        faktor_risiko.append("Kurang aktivitas fisik")
+    if data.asupan_kafein_mg_hari > 300:
+        faktor_risiko.append("Terlalu banyak konsumsi kafein")
+    if data.konsumsi_alkohol_gelas_minggu > 3:
+        faktor_risiko.append("Konsumsi alkohol tinggi")
+    if data.merokok == 1:
+        faktor_risiko.append("Kebiasaan merokok")
+    if data.riwayat_keluarga_kecemasan == 1:
+        faktor_risiko.append("Ada riwayat keluarga dengan kecemasan")
+    if data.tingkat_stres > 7:
+        faktor_risiko.append("Tingkat stres tinggi")
+    if data.detak_jantung_bpm > 100:
+        faktor_risiko.append("Detak jantung cepat (indikasi stres/ansietas)")
+    if data.laju_pernapasan > 20:
+        faktor_risiko.append("Laju pernapasan cepat")
+    if data.peristiwa_besar_hidup == 1:
+        faktor_risiko.append("Mengalami peristiwa besar dalam hidup")
 
     return {
         "prediksi": hasil,
         "label_prediksi": int(prediksi),
         "probabilitas_tidak_cemas": f"{probabilitas[0]*100:.2f}%",
-        "probabilitas_cemas": f"{probabilitas[1]*100:.2f}%"
+        "probabilitas_cemas": f"{probabilitas[1]*100:.2f}%",
+        "faktor_risiko": faktor_risiko
     }
-    

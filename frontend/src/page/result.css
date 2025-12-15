@@ -24,10 +24,9 @@
   --gradient-primary-hover: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
   --gradient-danger: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --gradient-bg:
-    radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent 30%),
-    radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.1), transparent 30%),
-    var(--dark-bg);
+  --gradient-bg: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent 30%),
+                 radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.1), transparent 30%),
+                 var(--dark-bg);
 
   --border-radius: 20px;
   --border-radius-sm: 12px;
@@ -37,6 +36,7 @@
 /* =============================
    Font & Reset
 ============================= */
+
 
 * {
   margin: 0;
