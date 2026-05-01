@@ -1,5 +1,5 @@
 
-# Machine-Learning-Kelompok-3
+# Anxiety Machine Learning
 
 ## 📌 Deskripsi Proyek
 Proyek ini bertujuan membangun sistem **Prediksi Tingkat Kecemasan (Anxiety Detection)** berbasis **Machine Learning**. Sistem terdiri dari Backend (FastAPI + ML Model), Frontend (ReactJS), Integrasi melalui API, serta Quality Assurance (QA) & Deployment (Docker).
