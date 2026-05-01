@@ -28,7 +28,7 @@ function Prediction() {
     e.preventDefault();
     setIsLoading(true); setError('');
     try {
-      const res = await fetch("http://localhost:8000/predict", {
+      const res = await fetch("https://mahen321-anxiety-prediction-ml.hf.space/predict", {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
