@@ -1,18 +1,15 @@
-# Gunakan base image Python
-FROM python:3.9-slim
+# Gunakan versi Python yang ringan
+FROM python:3.10-slim
 
-# Set working directory di container
+# Set direktori kerja di dalam container
 WORKDIR /app
 
-# Copy requirements.txt dan install dependencies
+# Salin file requirements dan install
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy semua file project backend ke container
+# Salin seluruh sisa file (main.py dan model.joblib)
 COPY . .
 
-# Expose port FastAPI
-EXPOSE 8000
-
-# Jalankan aplikasi FastAPI pakai uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Hugging Face Spaces MENGHARUSKAN aplikasi berjalan di port 7860
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
